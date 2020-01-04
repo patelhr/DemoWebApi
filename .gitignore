@@ -1,0 +1,11 @@
+﻿################################################################################
+# This .gitignore file was automatically created by Microsoft(R) Visual Studio.
+################################################################################
+
+/DemoWebApi/bin/Debug/netcoreapp3.1
+/.vs/DemoWebApi/DesignTimeBuild
+/.vs/DemoWebApi/v16
+/.vs/DemoWebApi/config
+/DemoWebApi/obj/Debug/netcoreapp3.1
+/DemoWebApi/obj
+/DemoWebApi/Properties
