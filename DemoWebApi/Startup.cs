@@ -22,7 +22,15 @@ namespace DemoWebApi
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddDbContext<DemoWebApiDbContext>(options =>
-              options.UseSqlServer(@"Server=.\SQLEXPRESS;Database=SchoolDB;Trusted_Connection=True;"));
+              options.UseSqlServer(@"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=Schools;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False"));
+
+            services.AddCors(options =>
+            {
+                options.AddPolicy("CorsPolicy",
+                    builder => builder.AllowAnyOrigin()
+                    .AllowAnyMethod()
+                    .AllowAnyHeader());
+            });
 
             services.AddTransient<IStudentsRepositroy, StudentsRepository>();
 
@@ -36,13 +44,10 @@ namespace DemoWebApi
             {
                 app.UseDeveloperExceptionPage();
             }
-
+            app.UseCors("CorsPolicy");
             app.UseHttpsRedirection();
-
             app.UseRouting();
-
             app.UseAuthorization();
-
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();

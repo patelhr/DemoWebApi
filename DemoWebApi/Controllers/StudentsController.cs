@@ -20,10 +20,8 @@ namespace DemoWebApi.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Students>>> GetStudents()
         {
-            var students = new List<Students>();
-            students.Add(new Students { FirstName = "Hardik", LastName = "Patel", Id = 1 });
-            students.Add(new Students { FirstName = "Monika", LastName = "Patel", Id = 2 });
-            students.Add(new Students { FirstName = "Hetal", LastName = "Patel", Id = 3 });
+            
+            var students = await _studentsRepositroy.GetStudentsAsync();
             return Ok(students);
         }
 
